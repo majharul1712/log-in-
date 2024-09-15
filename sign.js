@@ -8,7 +8,7 @@ function submitData(event) {
     const username = document.getElementById("username")
     const password = document.getElementById("password")
 
-    const oldUserInfo = JSON.parse(window.localStorage.getItem("UserInfo")) || []
+    const oldUserInfo = JSON.parse(window.localStorage.getItem("userInfo")) || []
 
     const newUser = {
         fastname: fastname.value,
@@ -18,9 +18,9 @@ function submitData(event) {
         isLoggedIn: true
     }
 
-    oldUserInfo.push("newUser")
+    oldUserInfo.push(newUser)
 
-    window.localStorage.setItem("userInfo", JSON.stringify(newUser))
+    window.localStorage.setItem("userInfo", JSON.stringify(oldUserInfo))
     window.location.replace("./home.html")
     submitbgtn.addEventListener("click", signupData)
 }
@@ -30,3 +30,4 @@ const lastname = document.getElementById("lastname").value = "";
 const username = document.getElementById("username").value = "";
 const password = document.getElementById("password").value = "";
 
+submitbgtn.addEventListener("click", signupData);
