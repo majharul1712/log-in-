@@ -3,29 +3,25 @@ const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
 
 let loginInfo = JSON.parse(localStorage.getItem("loginInfo")) || [];
+const userInfo = JSON.parse(localStorage.getItem("userInfo"))
 
 
-const matchingUser = userInfo.find(
-    (user) => user.username.toLowerCase() === user.username.toLowerCase() && user.password === user.password
 
-);
-let isLoggedIn = matchingUser && matchingUser.isLoggedIn;
-
-const username = document.getElementById("username").value.toLowerCase(); // Access the input field values
-const password = document.getElementById("password").value
 
 function LogginData(event) {
-    // event.preventDefault();
+    event.preventDefault();
+    const username = document.getElementById("username").value.toLowerCase(); // Access the input field values
+    const password = document.getElementById("password").value
 
 
     // Find a matching user in the userInfo array
     const user = userInfo.find(
-        (user) => user.username.toLowerCase() === username && user.password === user.password)
+        (user) => user.username.toLowerCase() === username && user.password === password)
 
 
     if (user) {
-        user.isLoggedIn = true;  // Set the logged-in flag to true
-        localStorage.setItem("userInfo", JSON.stringify(userInfo)); // Update localStorage
+        (user.isLoggedIn = true)  // Set the logged-in flag to true
+        localStorage.setItem("userInfo", JSON.stringify(loginInfo)); // Update localStorage
         window.location.replace("./home.html");  // Redirect to home page
 
     }
